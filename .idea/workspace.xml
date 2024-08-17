@@ -5,14 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1cbd87-372e-4be9-99d5-69f465a17bf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/digikala/shop/templates/update_user.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/shop/templates/additional_info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/shop/templates/complete_profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/static/assets/digikala.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/cart/templates/cart_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/cart/templates/cart_summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/cart/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/digikala/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/digikala/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/category_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/category_summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/update_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/update_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/static/css/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +63,7 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Python(Modhej)/digikala/digikala/cart/templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Python(Modhej)/digikala/digikala/static/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -60,6 +75,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Python(Modhej)\digikala\digikala\static\assets" />
+      <recent name="D:\Python(Modhej)\digikala\digikala\shop\templates" />
       <recent name="D:\Python(Modhej)\digikala\digikala\cart\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -137,7 +154,19 @@
       <workItem from="1723014786756" duration="1257000" />
       <workItem from="1723021100492" duration="28000" />
       <workItem from="1723108975667" duration="1173000" />
-      <workItem from="1723181862285" duration="12388000" />
+      <workItem from="1723181862285" duration="13752000" />
+      <workItem from="1723267608762" duration="838000" />
+      <workItem from="1723270639577" duration="5512000" />
+      <workItem from="1723295854653" duration="8489000" />
+      <workItem from="1723359442204" duration="4506000" />
+      <workItem from="1723399447944" duration="144000" />
+      <workItem from="1723530493444" duration="3840000" />
+      <workItem from="1723534704385" duration="11224000" />
+      <workItem from="1723607598245" duration="19851000" />
+      <workItem from="1723744551680" duration="2160000" />
+      <workItem from="1723784634962" duration="28777000" />
+      <workItem from="1723838191414" duration="972000" />
+      <workItem from="1723908545952" duration="1614000" />
     </task>
     <servers />
   </component>

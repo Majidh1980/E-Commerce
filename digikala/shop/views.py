@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
-from .models import Product, Category
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Product, Category, Order
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .forms import SignUpForm, UpdateUserForm
+from .forms import SignUpForm, UpdateUserForm, AdditionalInfoForm
+from django.contrib.auth.decorators import login_required
 
 def category_summary(request):
     all_cat = Category.objects.all()
@@ -24,15 +25,21 @@ def about(request):
 
 def login_user(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        phone_number = request.POST['phone_number']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'با موفقیت وارد شدید')
-            return redirect('home')
-        else:
-            messages.error(request, ("اسم کاربری یا رمز اشتباه است"))
+        User = get_user_model()
+        try:
+            user = User.objects.get(username=phone_number)
+            user = authenticate(request, username=user.username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'با موفقیت وارد شدید')
+                return redirect('home')
+            else:
+                messages.error(request, 'اسم کاربری یا رمز اشتباه است')
+                return redirect('login')
+        except User.DoesNotExist:
+            messages.error(request, 'کاربری با این شماره تلفن وجود ندارد')
             return redirect('login')
     else:
         return render(request, 'login.html')
@@ -49,16 +56,21 @@ def signup_user(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            password1 = form.cleaned_data['password1']
-            user = authenticate(request, username=username, password=password1)
-            login(request, user)
-            messages.success(request, ('اکانت شما ساخته شد'))
-            return redirect('home')
+            user = form.save(commit=False)
+            user.username = form.cleaned_data.get('phone_number')  # Use phone number as username
+            user.save()
+            phone_number = form.cleaned_data.get('phone_number')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=phone_number, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'اکانت شما ساخته شد')
+                return redirect('home')
+            else:
+                messages.error(request, 'مشکلی در ورود به سیستم وجود دارد')
+                return redirect('signup')
         else:
-            # print(form.errors)
-            messages.error(request, ('ثبت نام انحام نشد'))
+            messages.error(request, 'ثبت نام انجام نشد')
             return redirect('signup')
     else:
         return render(request, 'signup.html', {'form': form})
@@ -80,7 +92,11 @@ def update_user(request):
 
 
 def product(request, pk):
-    product = Product.objects.get(id=pk)
+    if not request.user.email or not request.user.first_name or not request.user.last_name:
+        messages.error(request, "ابتدا باید پروفایل خود را تکمیل کنید!")
+        return redirect('complete_profile')
+
+    product = get_object_or_404(Product, id=pk)
     return render(request, 'product.html', {'product': product})
 
 
@@ -94,6 +110,33 @@ def category(request, cat):
         messages.error(request, 'دسته بندی وجود دارد')
         return redirect('home')
 
+
+
+
+@login_required
+def additional_info(request):
+    if request.method == 'POST':
+        form = AdditionalInfoForm(request.POST, request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "اطلاعات شما با موفقیت ثبت شد")
+            return redirect('home')
+    else:
+        form = AdditionalInfoForm(instance=request.user)
+    return render(request, 'additional_info.html', {'form': form})
+
+
+@login_required
+def complete_profile(request):
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'پروفایل شما تکمیل شد')
+            return redirect('home')
+    else:
+        form = UpdateUserForm(instance=request.user)
+    return render(request, 'complete_profile.html', {'form': form})
 
 
 

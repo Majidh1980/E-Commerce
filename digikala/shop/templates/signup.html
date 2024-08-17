@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<header class="bg-dark py-5">
+<header class="bg-success py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">ثبت نام</h1>
@@ -13,17 +13,16 @@
     <div>
         <center>
             <div class="col-10">
-                <form method="POST"  action="{% url 'signup' %}">
+                <form method="POST" action="{% url 'signup' %}">
                     {% csrf_token %}
-                        {{ form.as_p }}
-                        <br><br>
+                    {{ form.as_p }}
+                    <br><br>
                     <button type="submit" class="btn btn-secondary">ثبت نام</button>
                 </form>
-
             </div>
         </center>
     </div>
-
 </div>
 <br><br>
 {% endblock %}
+

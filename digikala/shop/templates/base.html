@@ -16,6 +16,18 @@
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     </head>
+    <style>
+    .form-control {
+        width: 300px; /* Adjust the width as needed */
+        max-width: 100%;
+        padding: 10px; /* Adjust the padding as needed */
+        margin: 0 auto; /* Center the input boxes */
+    }
+    .btn-secondary {
+        width: 150px; /* Adjust the width of the button */
+        padding: 10px; /* Adjust the padding as needed */
+    }
+    </style>
     <body dir="rtl">
         {% include 'navbar.html' %}
 
@@ -30,7 +42,7 @@
         {% block content %}
         {% endblock %}
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer style="background-color: #0d6efd;">
             <div class="container"><p class="m-0 text-center text-white">&hearts;</p></div>
         </footer>
         <!-- Bootstrap core JS-->

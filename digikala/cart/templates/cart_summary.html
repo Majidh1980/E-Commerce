@@ -3,7 +3,7 @@
 {% load humanize %}
 {% block content %}
 <!-- Header-->
-<header class="bg-dark py-5">
+<header class="bg-secondary py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">سبد خرید</h1>
@@ -62,10 +62,33 @@
 {% endif %}
 <br><br><br><br><br><br>
 
+
 <script>
+$(document).on('click', '#add-cart', function (e){
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '{% url "cart_add" %}',
+        data: {
+            product_id: $('#add-cart').val(),
+            product_qty: $('#cart-qty option:selected').text(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post'
+        },
+        success: function (json){
+            // console.log(json)
+            document.getElementById('cart_quantity').textContent = json.qty
+            location.reload();
+        },
+        error: function (xhr, errmsg, err){
+
+        }
+
+    });
+});
 $(document).on('click', '.update-cart', function (e){
     e.preventDefault();
-    var productid = $(this).data('index')
+    var productid = $(this).data('index');
     $.ajax({
         type: 'POST',
         url: '{% url "cart_update" %}',
@@ -76,17 +99,13 @@ $(document).on('click', '.update-cart', function (e){
             action: 'post'
         },
         success: function (json){
-            // console.log(json)
-            // document.getElementById('cart_quantity').textContent = json.qty
             location.reload();
         },
         error: function (xhr, errmsg, err){
-
+            console.log(xhr.status + ": " + xhr.responseText);
         }
-
-    })
-})
-
+    });
+});
 $(document).on('click', '.delete-product', function (e){
     e.preventDefault();
     $.ajax({
@@ -98,16 +117,13 @@ $(document).on('click', '.delete-product', function (e){
             action: 'post'
         },
         success: function (json){
-            // console.log(json)
-            // document.getElementById('cart_quantity').textContent = json.qty
             location.reload();
         },
         error: function (xhr, errmsg, err){
-
+            console.log(xhr.status + ": " + xhr.responseText);
         }
-
-    })
-})
+    });
+});
 </script>
 {% endblock %}
 

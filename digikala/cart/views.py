@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .cart import Cart
 from shop.models import Product
 from django.http import JsonResponse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 
 def cart_summary(request):
@@ -11,7 +13,6 @@ def cart_summary(request):
     quantities = cart.get_quants()
     total = cart.get_total()
     return render(request, 'cart_summary.html', {'cart_products': cart_products, 'quantities': quantities, 'total': total })
-
 
 def cart_add(request):
     cart = Cart(request)
@@ -24,7 +25,7 @@ def cart_add(request):
         cart_quantity = cart.__len__()
         # response = JsonResponse({'Product name': product.name}) #It is just for education not the project
         response = JsonResponse({'qty': cart_quantity})
-        messages.success(request, ("به سبد خرید اضافه شد"))
+        messages.success(request, "به سبد خرید اضافه شد")
         return response
 
 
@@ -38,6 +39,7 @@ def cart_delete(request):
         response = JsonResponse({'product': product_id})
         messages.success(request, ("محصول از سبد خرید حذف شد!"))
         return response
+
 
 
 def cart_update(request):
