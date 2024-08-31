@@ -10,6 +10,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -640,6 +641,7 @@ progress {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   margin-left: auto;
+  max-width: 600px;
 }
 
 @media (min-width: 576px) {
@@ -3952,6 +3954,7 @@ textarea.form-control-lg {
   }
 }
 @media (min-width: 992px) {
+
   .navbar-expand-lg {
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -3966,6 +3969,7 @@ textarea.form-control-lg {
     padding-right: var(--bs-navbar-nav-link-padding-x);
     padding-left: var(--bs-navbar-nav-link-padding-x);
   }
+
   .navbar-expand-lg .navbar-nav-scroll {
     overflow: visible;
   }
@@ -3998,6 +4002,7 @@ textarea.form-control-lg {
     overflow-y: visible;
   }
 }
+
 @media (min-width: 1200px) {
   .navbar-expand-xl {
     flex-wrap: nowrap;
@@ -10825,4 +10830,35 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+.container-2xl-w {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.styles_container__ipSg9 {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 84px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.styles_innerContainer__6FPF0 {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.styles_image__ggcBy img {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }

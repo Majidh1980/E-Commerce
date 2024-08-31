@@ -15,12 +15,14 @@ def category_summary(request):
 
 def helloworld(request):
     all_products = Product.objects.all()
-    return render(request, 'index.html', {'products': all_products})
+    all_categories = Category.objects.all()
+    return render(request, 'index.html', {'products': all_products, 'categories': all_categories})
     #return HttpResponse(all_products)
 
 
 def about(request):
-    return render(request, 'about.html')
+    all_categories = Category.objects.all()
+    return render(request, 'about.html', {'categories': all_categories})
 
 
 def login_user(request):
@@ -79,23 +81,19 @@ def update_user(request):
     if request.user.is_authenticated:
         current_user = User.objects.get(id=request.user.id)
         user_form = UpdateUserForm(request.POST or None, instance=current_user)
-
+        categories = Category.objects.all()  # بارگذاری دسته‌بندی‌ها
         if user_form.is_valid():
             user_form.save()
             login(request, current_user)
             messages.success(request, 'پروفایل شما ویرایش شد')
             return redirect('home')
-        return render(request, 'update_user.html', {'user_form': user_form})
+        return render(request, 'update_user.html', {'user_form': user_form, 'categories': categories})
     else:
         messages.error(request, 'ابتدا باید لاگین شوید!')
         return redirect('home')
 
 
 def product(request, pk):
-    if not request.user.email or not request.user.first_name or not request.user.last_name:
-        messages.error(request, "ابتدا باید پروفایل خود را تکمیل کنید!")
-        return redirect('complete_profile')
-
     product = get_object_or_404(Product, id=pk)
     return render(request, 'product.html', {'product': product})
 
@@ -105,7 +103,9 @@ def category(request, cat):
     try:
         category = Category.objects.get(name=cat)
         products = Product.objects.filter(category=category)
-        return render(request, 'category.html', {'products': products, 'category': category})
+        all_categories = Category.objects.all()
+        return render(request, 'category.html', {'products': products, 'category': category,
+                                                 'categories': all_categories})
     except:
         messages.error(request, 'دسته بندی وجود دارد')
         return redirect('home')
@@ -128,12 +128,14 @@ def additional_info(request):
 
 @login_required
 def complete_profile(request):
+    all_categories = Category.objects.all()
     if request.method == 'POST':
         form = UpdateUserForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, 'پروفایل شما تکمیل شد')
             return redirect('home')
+
     else:
         form = UpdateUserForm(instance=request.user)
     return render(request, 'complete_profile.html', {'form': form})

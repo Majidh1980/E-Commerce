@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+</style>
+<div class="container my-5">
+    <div class="row">
+        <!-- Payment Form -->
+        <div class="col-md-12">
+            <h2 class="mb-4 text-primary">پرداخت</h2>
+            <form method="POST" action="{% url 'payment' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="amount" class="form-label">مبلغ</label>
+                    <input type="text" class="form-control" id="amount" name="amount" value="{{ request.GET.total }}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="cardNumber" class="form-label">شماره کارت</label>
+                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="شماره کارت خود را وارد کنید">
+                </div>
+                <div class="mb-3">
+                    <label for="cardName" class="form-label">نام صاحب کارت</label>
+                    <input type="text" class="form-control" id="cardName" name="cardName" placeholder="نام صاحب کارت را وارد کنید">
+                </div>
+                <div class="mb-3">
+                    <label for="expiryDate" class="form-label">تاریخ انقضا</label>
+                    <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+                </div>
+                <div class="mb-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">پرداخت</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

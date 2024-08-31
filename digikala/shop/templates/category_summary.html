@@ -15,15 +15,43 @@
             <div class="col-10">
                 <p align="justify">
                     {% for cat in category %}
-                        <a href="{% url 'category' cat.name %}"><h3>{{ cat.name }}</h3></a>
+                        <a href="#" class="category-link" data-bs-toggle="modal" data-bs-target="#categoryModal{{ forloop.counter }}">{{ cat.name }}</a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="categoryModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="categoryModalLabel{{ forloop.counter }}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="categoryModalLabel{{ forloop.counter }}">{{ cat.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            {% for product in cat.product_set.all %}
+                                                <div class="col-md-4">
+                                                    <div class="card mb-4">
+                                                        <img src="{{ product.picture.url }}" class="card-img-top" alt="{{ product.name }}">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{ product.name }}</h5>
+                                                            <p class="card-text">{{ product.price }} تومان</p>
+                                                            <a href="{% url 'product' product.id %}" class="btn btn-primary">مشاهده محصول</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
-
                 </p>
-
             </div>
         </center>
     </div>
-
 </div>
 <br><br>
 {% endblock %}

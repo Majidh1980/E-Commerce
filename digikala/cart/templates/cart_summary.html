@@ -55,13 +55,20 @@
     </div>
 </div>
 {% endfor %}
-<h3>مجموع کل سفارشات: {{total| intcomma }}تومان</h3>
+<div class="container text-center">
+    <h3>مجموع کل سفارشات: {{total| intcomma }} تومان</h3>
+    {% if user.is_authenticated %}
+        <a href="{% url 'checkout' %}" class="btn btn-success">تکمیل و تایید سفارشات</a>
+    {% else %}
+        <a href="{% url 'login' %}?next={% url 'cart_summary' %}" class="btn btn-success">تکمیل و تایید سفارشات
+        </a>
+    {% endif %}
+</div>
 {% else %}
 <br><br>
-<center><h3 class="container"> سبد خرید شما خالیست &#128532;</h3></center>
+<center><h3 class="container"> سبد خرید شما خالیست 😔</h3></center>
 {% endif %}
 <br><br><br><br><br><br>
-
 
 <script>
 $(document).on('click', '#add-cart', function (e){
@@ -126,5 +133,3 @@ $(document).on('click', '.delete-product', function (e){
 });
 </script>
 {% endblock %}
-
-

@@ -1,53 +1,193 @@
 {% load static %}
 {% load humanize %}
-
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>فروشگاه من</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    </head>
-    <style>
-    .form-control {
-        width: 300px; /* Adjust the width as needed */
-        max-width: 100%;
-        padding: 10px; /* Adjust the padding as needed */
-        margin: 0 auto; /* Center the input boxes */
-    }
-    .btn-secondary {
-        width: 150px; /* Adjust the width of the button */
-        padding: 10px; /* Adjust the padding as needed */
-    }
-    </style>
-    <body dir="rtl">
-        {% include 'navbar.html' %}
 
-        {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-success" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>فروشگاه من</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+        .dropdown-menu {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .dropdown-item {
+            white-space: normal;
+        }
+        .navbar-brand {
+            margin-right: 10px; /* Adjust this value to shift the link to the right */
+        }
+        .navbar-brand img {
+            max-height: 50px; /* Adjust the height as needed */
+            width: auto;
+            margin-right: -450px;
+        }
+
+        .navbar-nav {
+            margin-right: -350px; /* Ensure the nav items are on the left */
+        }
+
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            color: #6c757d;
+        }
+        .footer .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer .footer-links li {
+            display: inline;
+            margin-right: 15px;
+        }
+        .footer .footer-links a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+        .footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .footer .social-icons {
+            list-style: none;
+            padding: 0;
+        }
+        .footer .social-icons li {
+            display: inline;
+            margin-right: 15px;
+        }
+        .footer .social-icons a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+        .footer .social-icons a:hover {
+            color: #007bff;
+        }
+        .form-control {
+            max-width: 300px; /* Adjust the width as needed */
+        }
+        #navbarNav {
+            margin-left: -350px;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}"> <img src="{% static 'assets/digikala.jpg' %}" alt="لوگوی دیجیکالا"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">خانه</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            دسته‌بندی‌ها
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for cat in categories %}
+                                <li><a class="dropdown-item" href="{% url 'category' cat.name %}">{{ cat.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">درباره ما</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'update_user' %}">پروفایل</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">خروج</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">ورود</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">ثبت نام</a></li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex">
+                    <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark">
+                        <i class="bi-cart-fill me-1"></i>
+                        سبد خرید
+                        <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
+                    </a>
+                </form>
             </div>
-            {% endfor %}
-        {% endif %}
-        {% block content %}
-        {% endblock %}
-        <!-- Footer-->
-        <footer style="background-color: #0d6efd;">
-            <div class="container"><p class="m-0 text-center text-white">&hearts;</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'js/scripts.js' %}"></script>
-    </body>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer-->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <h5>درباره ما</h5>
+                <p>ما یک فروشگاه آنلاین هستیم که بهترین محصولات را با بهترین قیمت‌ها ارائه می‌دهیم.</p>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <h5>لینک‌های مفید</h5>
+                <ul class="footer-links">
+                    <li><a href="{% url 'home' %}">خانه</a></li>
+                    <li><a href="{% url 'about' %}">درباره ما</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                    <li><a href="#">سوالات متداول</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <h5>ما را دنبال کنید</h5>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                    <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                    <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                    <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <p>© 2024 فروشگاه من. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdowns = document.querySelectorAll('.dropdown-toggle');
+        dropdowns.forEach(function(dropdown) {
+            dropdown.addEventListener('click', function(event) {
+                event.preventDefault();
+                var menu = this.nextElementSibling;
+                if (menu.style.display === 'block') {
+                    menu.style.display = 'none';
+                } else {
+                    menu.style.display = 'block';
+                }
+            });
+        });
+    });
+</script>
+</body>
 </html>

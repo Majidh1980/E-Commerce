@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+</style>
+<div class="container my-5">
+    <div class="row">
+        <!-- Order Summary -->
+        <div class="col-md-12">
+            <h2 class="mb-4 text-primary">خلاصه سفارش</h2>
+            <ul class="list-group mb-3">
+                {% for product in cart_products %}
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">{{ product.name }}</h6>
+                        <small class="text-muted">تعداد: {{ quantities.product.id }}</small>
+                    </div>
+                    <span class="text-muted">{{ product.price|intcomma }} تومان</span>
+                </li>
+                {% endfor %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>مجموع کل</span>
+                    <strong>{{ total|intcomma }} تومان</strong>
+                </li>
+            </ul>
+            <a href="{% url 'payment' %}?total={{ total }}" class="btn btn-primary btn-lg btn-block">تایید و تکمیل سفارش</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
