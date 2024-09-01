@@ -5,44 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1cbd87-372e-4be9-99d5-69f465a17bf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/digikala/payment/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/payment/templates/checkout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/payment/templates/payment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/payment/templates/payment_success.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/payment/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/1-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/2-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/3-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/4-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/5-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/6-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/7-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/8-thumb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/slide1.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/slide2.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/slide3.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/slide4.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/digikala/static/assets/story.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/shop/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/cart/templates/cart_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/cart/templates/cart_summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/digikala/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/digikala/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/digikala/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/digikala/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/category_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/category_summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/static/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/static/js/scripts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +162,9 @@
       <workItem from="1724739609747" duration="5073000" />
       <workItem from="1724825217954" duration="20323000" />
       <workItem from="1724913828818" duration="9559000" />
-      <workItem from="1725084507626" duration="3729000" />
+      <workItem from="1725084507626" duration="8195000" />
+      <workItem from="1725171323589" duration="2267000" />
+      <workItem from="1725176000192" duration="7416000" />
     </task>
     <servers />
   </component>

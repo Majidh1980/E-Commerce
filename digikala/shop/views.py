@@ -7,6 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from .forms import SignUpForm, UpdateUserForm, AdditionalInfoForm
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
+from .serializers import ProductSerializer
 
 def category_summary(request):
     all_cat = Category.objects.all()
@@ -139,6 +141,10 @@ def complete_profile(request):
     else:
         form = UpdateUserForm(instance=request.user)
     return render(request, 'complete_profile.html', {'form': form})
+
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
 
 
