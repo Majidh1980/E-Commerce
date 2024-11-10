@@ -15,10 +15,11 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('signup/', views.signup_user, name='signup'),
     path('update_user/', views.update_user, name='update_user'),
+    path('update_info/', views.update_info, name='update_info'),
+    path('update_password/', views.update_password, name='update_password'),
     path('product/<int:pk>/', views.product, name='product'),
     path('category/<str:cat>/', views.category, name='category'),
     path('category/', views.category_summary, name='category_summary'),
-    path('additional_info/', views.additional_info, name='additional_info'),
-    path('complete_profile/', views.complete_profile, name='complete_profile'),
-    path('', include(router.urls)),
+    path('search/', views.search, name='search'),
+
 ]

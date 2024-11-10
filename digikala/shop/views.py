@@ -1,14 +1,39 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Category, Order
+from .models import Product, Category, Profile
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .forms import SignUpForm, UpdateUserForm, AdditionalInfoForm
+from .forms import SignUpForm, UpdateUserForm, AdditionalInfoForm, UpdatePasswordForm, UpdateUserInfo
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
 from .serializers import ProductSerializer
+from django.db.models import Q
+
+
+def search(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        searched = Product.objects.filter(Q(name__icontains=searched) | Q(description__icontains=searched))
+
+        if not searched:
+            messages.error(request, 'چنین محصولی وجود ندارد!')
+            return render(request, 'search.html', {})
+        else:
+            return render(request, 'search.html', {'searched': searched})
+    return render(request, 'search.html', {})
+@login_required
+def update_info(request):
+    user = request.user
+    profile, created = Profile.objects.get_or_create(user=user)
+    form = UpdateUserInfo(request.POST or None, instance=profile)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'اطلاعات کاربری شما ویرایش شد')
+        return redirect('home')
+    return render(request, 'update_info.html', {'form': form, 'phone_number': profile.phone})
+
 
 def category_summary(request):
     all_cat = Category.objects.all()
@@ -61,15 +86,21 @@ def signup_user(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = form.cleaned_data.get('phone_number')  # Use phone number as username
-            user.save()
             phone_number = form.cleaned_data.get('phone_number')
+            user.username = phone_number  # Use phone number as username
+            user.save()
+
+            # Create the profile and save the phone number in the profile
+            profile, created = Profile.objects.get_or_create(user=user)
+            profile.phone = phone_number
+            profile.save()
+
             password = form.cleaned_data.get('password1')
             user = authenticate(username=phone_number, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, 'اکانت شما ساخته شد')
-                return redirect('home')
+                return redirect('update_info')
             else:
                 messages.error(request, 'مشکلی در ورود به سیستم وجود دارد')
                 return redirect('signup')
@@ -92,6 +123,30 @@ def update_user(request):
         return render(request, 'update_user.html', {'user_form': user_form, 'categories': categories})
     else:
         messages.error(request, 'ابتدا باید لاگین شوید!')
+        return redirect('home')
+
+
+def update_password(request):
+    if request.user.is_authenticated:
+        current_user = request.user
+
+        if request.method == 'POST':
+            form = UpdatePasswordForm(current_user, request.POST)
+
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'رمز با موفقیت ویرایش شد')
+                login(request, current_user)
+                return redirect('update_user')
+            else:
+                for error in list(form.errors.values()):
+                    messages.error(request, error)
+                return redirect('update_password')
+        else:
+            form = UpdatePasswordForm(current_user)
+            return render(request, 'update_password.html', {'form': form})
+    else:
+        messages.error(request, "ابتدا وارد شوید")
         return redirect('home')
 
 

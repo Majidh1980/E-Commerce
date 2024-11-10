@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1cbd87-372e-4be9-99d5-69f465a17bf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/digikala/shop/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/shop/context_processors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/shop/templates/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/shop/templates/update_info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/digikala/shop/templates/update_password.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/digikala/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/digikala/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/digikala/digikala/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/digikala/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/digikala/shop/templates/update_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/templates/update_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/digikala/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/digikala/shop/views.py" afterDir="false" />
     </list>
@@ -47,13 +56,13 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Python(Modhej)/digikala/digikala/static/assets&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/majid/Desktop/Regression .ipynb&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Django/Jinja2 Template&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -165,6 +174,54 @@
       <workItem from="1725084507626" duration="8195000" />
       <workItem from="1725171323589" duration="2267000" />
       <workItem from="1725176000192" duration="7416000" />
+      <workItem from="1725208088677" duration="6887000" />
+      <workItem from="1725257122769" duration="7823000" />
+      <workItem from="1725298880968" duration="4105000" />
+      <workItem from="1725471014100" duration="128000" />
+      <workItem from="1725480706695" duration="849000" />
+      <workItem from="1725548287015" duration="18000" />
+      <workItem from="1725550853832" duration="7168000" />
+      <workItem from="1725565102278" duration="20000" />
+      <workItem from="1726463748641" duration="2223000" />
+      <workItem from="1727495929248" duration="1979000" />
+      <workItem from="1727499486559" duration="894000" />
+      <workItem from="1727627776929" duration="73000" />
+      <workItem from="1727710337605" duration="1136000" />
+      <workItem from="1727712346637" duration="95000" />
+      <workItem from="1727983136375" duration="39000" />
+      <workItem from="1727984390910" duration="634000" />
+      <workItem from="1727985635589" duration="173000" />
+      <workItem from="1727986827541" duration="72000" />
+      <workItem from="1728195674971" duration="19000" />
+      <workItem from="1728409825468" duration="1266000" />
+      <workItem from="1728474778540" duration="1451000" />
+      <workItem from="1728477611301" duration="68000" />
+      <workItem from="1728478172375" duration="94000" />
+      <workItem from="1728480473640" duration="210000" />
+      <workItem from="1728486900803" duration="1153000" />
+      <workItem from="1728491101428" duration="39000" />
+      <workItem from="1728492256614" duration="121000" />
+      <workItem from="1728492571046" duration="76000" />
+      <workItem from="1728649389778" duration="1083000" />
+      <workItem from="1728650751664" duration="52000" />
+      <workItem from="1728664229507" duration="5663000" />
+      <workItem from="1728721656922" duration="7083000" />
+      <workItem from="1728835772606" duration="4929000" />
+      <workItem from="1729513371789" duration="10074000" />
+      <workItem from="1729603691232" duration="12236000" />
+      <workItem from="1729695152997" duration="6456000" />
+      <workItem from="1729792101512" duration="1306000" />
+      <workItem from="1729924303465" duration="14726000" />
+      <workItem from="1730012516980" duration="6241000" />
+      <workItem from="1730134340584" duration="3584000" />
+      <workItem from="1730529595004" duration="1481000" />
+      <workItem from="1730654839279" duration="4881000" />
+      <workItem from="1730824087245" duration="2659000" />
+      <workItem from="1730832478073" duration="1303000" />
+      <workItem from="1730999202231" duration="5569000" />
+      <workItem from="1731087986542" duration="1343000" />
+      <workItem from="1731166249405" duration="1298000" />
+      <workItem from="1731263021628" duration="4930000" />
     </task>
     <servers />
   </component>

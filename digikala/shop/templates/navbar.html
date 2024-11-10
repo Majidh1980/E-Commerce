@@ -10,7 +10,16 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">درباره ما</a></li>
 
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'update_user' %}">پروفایل</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">پروفایل</a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="{% url 'update_user' %}">پروفایل کاربری</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="{% url 'update_info' %}">اطلاعات کاربری</a></li>
+                    </ul>
+                </li>
+
                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">خروج</a></li>
                 {% else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">ورود</a></li>
@@ -18,8 +27,8 @@
                 {% endif %}
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">فروشگاه</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="nav-link dropdown-toggle" id="storeDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">فروشگاه</a>
+                    <ul class="dropdown-menu" aria-labelledby="storeDropdown">
                         <li><a class="dropdown-item" href="{% url 'category_summary' %}">دسته بندیها</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="{% url 'category' 'لپ-تاپ' %}">لپ تاپها</a></li>
